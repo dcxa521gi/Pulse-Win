@@ -1,0 +1,75 @@
+{
+  "name": "pulse-windows",
+  "version": "1.0.1",
+  "description": "Pulse for Windows — AI coding allowance monitor",
+  "author": "Pulse Windows contributors",
+  "license": "Apache-2.0",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "start": "electron .",
+    "test": "node --test tests/*.test.cjs",
+    "dist": "npm run build && electron-builder --win nsis --x64 --publish never"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "electron-updater": "^6.8.9",
+    "lucide-react": "^0.577.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.8.1",
+    "playwright": "^1.58.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "build": {
+    "publish": [{"provider":"github","owner":"dcxa521gi","repo":"Pulse-Win","releaseType":"release"}],
+    "appId": "org.pulse.windows",
+    "productName": "Pulse",
+    "copyright": "Copyright © 2026 Pulse contributors",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "LICENSE",
+      "NOTICE",
+      "THIRD_PARTY_NOTICES.md"
+    ],
+    "extraResources": [
+      {
+        "from": "electron/fullscreen.ps1",
+        "to": "fullscreen.ps1"
+      },
+      {
+        "from": "electron/antigravity.ps1",
+        "to": "antigravity.ps1"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "artifactName": "Pulse-Windows-${version}-Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "installerLanguages": [
+        "zh_CN",
+        "en_US"
+      ],
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

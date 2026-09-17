@@ -1,0 +1,15 @@
+Pulse for Windows
+Independent Windows adaptation, 2026.
+
+Based on qunqin24/Pulse, upstream commit 442a9c5068f76cf67ee6a982ea6e288570250755.
+https://github.com/qunqin24/Pulse
+Licensed under Apache License 2.0. See LICENSE.
+
+The Windows application shell, React views, provider adapters and Windows packaging
+are new implementations. Ring dimensions, dock geometry, provider parsing rules,
+reference fixtures, application icon and provider SVG marks derive from upstream.
+This is not an official Windows release by the upstream author.
+
+Provider marks retain their owners' rights and applicable Lobe Icons MIT notices.
+React (MIT), Lucide (ISC), Cheerio (MIT) and Electron (MIT and bundled third-party
+licenses) are used by this application. Their bundled notices remain in the package.
